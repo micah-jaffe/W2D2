@@ -16,7 +16,13 @@ class Piece
   end
   
   def valid_moves
+    # moves on the board that don't have our own color in it
+    our_pieces = []
+    @board.rows.each do |row|
+      our_pieces.concat(row.select { |square| square.color == @color })
+    end
     
+    @board.valid_moves(pos) - our_pieces
   end
   
   def pos=(val)

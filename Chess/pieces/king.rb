@@ -1,4 +1,5 @@
 class King < Piece 
+  include SteppingPiece
   
   def symbol
     @color == :W ? "\u2654" : "\u265a"

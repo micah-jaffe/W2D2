@@ -24,10 +24,9 @@ module SlidingPiece
     possible_moves
   end
   
-  #private
+  private
   
   def move_dirs 
-    # rook_dirs = [[0, -1], [0, 1], [1, 0], [-1, 0]]
     self.move_dirs
   end
   
@@ -38,7 +37,7 @@ module SlidingPiece
     
     pos.map!.with_index { |el, idx| el + vector[idx] }
     
-    while board.valid_pos?(pos) && board[pos].is_a?(NullPiece)
+    while board.valid_pos?(pos) && board[pos].color != self.color
       moves_for_vector << pos
       pos.map!.with_index { |el, idx| el + vector[idx] }
     end
