@@ -8,7 +8,7 @@ class NullPiece < Piece
   end
   
   def symbol
-    :N
+    "\u25a2"
   end
   
   def moves

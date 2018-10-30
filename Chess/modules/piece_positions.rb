@@ -19,7 +19,7 @@ module PiecePositions
     [1, 5] => Pawn.new(:B, self),
     [1, 6] => Pawn.new(:B, self),
     [1, 7] => Pawn.new(:B, self),
-
+  
     [6, 0] => Pawn.new(:W, self),
     [6, 1] => Pawn.new(:W, self),
     [6, 2] => Pawn.new(:W, self),
@@ -36,6 +36,8 @@ module PiecePositions
     [7, 5] => Bishop.new(:W, self),
     [7, 6] => Knight.new(:W, self),
     [7, 7] => Rook.new(:W, self)  
-  }.default = NullPiece.instance
+  }
+  
+  PIECE_POSITIONS.default = NullPiece.instance
 
 end
