@@ -1,7 +1,7 @@
 module SteppingPiece
   
   def moves
-    pos = [5, 4] #HOW DO WE FIND POS INSIDE THE MODULE?
+    pos = self.pos 
     possible_moves = []
     move_diffs.each do |diff|
       move = []
@@ -14,11 +14,11 @@ module SteppingPiece
     possible_moves
   end
   
-  # private 
+  private 
   
   def move_diffs
-    king_diffs = [[-1, -1], [0, -1], [1, -1], [1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0]]
+    self.move_diffs
+    # king_diffs = [[-1, -1], [0, -1], [1, -1], [1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0]]
     #returns an array of possible differentials
   end
-  
 end
