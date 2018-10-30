@@ -55,19 +55,38 @@ class Board
   end
   
   def checkmate?(color)
+    all_our_moves = []
     
-  end
-  
-  def in_check?(color)
-    king_pos = []
     @rows.each_with_index do |row, idx|
       row.each_with_index do |square, idx2|
-        if square.is_a?(King) && square.color == color
-          king_pos.concat([idx, idx2])
+        if square.color == color
+          all_our_moves.concat(square.valid_moves)
         end
       end
     end
     
+    all_out_moves.all(&:empty?) && in_check?(color) 
+    end
+  
+  def in_check?(color)
+    king_pos = []
+    all_opposing_moves = []
+    
+    @rows.each_with_index do |row, idx|
+      row.each_with_index do |square, idx2|
+        
+        if square.is_a?(King) && square.color == color
+          king_pos.concat([idx, idx2])
+        end
+        
+        if square.color && square.color != color
+          all_opposing_moves.concat(square.moves)
+        end
+        
+      end
+    end
+    
+    all_opposing_moves.include?(king_pos)
   end
   
   def valid_moves 
