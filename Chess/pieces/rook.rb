@@ -1,3 +1,5 @@
+require_relative "../modules/sliding_piece.rb"
+
 class Rook < Piece 
   include SlidingPiece
   

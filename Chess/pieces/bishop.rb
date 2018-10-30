@@ -1,3 +1,5 @@
+require_relative "../modules/sliding_piece.rb"
+
 class Bishop < Piece
   include SlidingPiece
   

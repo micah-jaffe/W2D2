@@ -1,3 +1,5 @@
+require_relative "../modules/stepping_piece.rb"
+
 class King < Piece 
   include SteppingPiece
   

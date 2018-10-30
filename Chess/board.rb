@@ -1,6 +1,8 @@
-require_relative "piece"
+require_all 'pieces'
+require_all 'modules'
 
 class Board 
+  include PiecePositions
   attr_reader :rows
   
   def initialize
@@ -8,10 +10,11 @@ class Board
     
     @rows.length.times do |i1|
       @rows.length.times do |i2| 
-        if [0, 1, 6, 7].include?(i1) 
-          pos = [i1, i2]
-          self[pos] = Piece.new(nil, nil, nil)
-        end
+        
+        board_pos = [i1, i2]
+        self[board_pos] = PIECE_POSITIONS[board_pos]
+        self[board_pos].pos = board_pos
+      
       end 
     end
     

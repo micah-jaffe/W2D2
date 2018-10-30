@@ -11,9 +11,9 @@ class Pawn < Piece
   private
   
   def at_start_row?
-    if @color == :W && @pos.first == 1 
+    if @color == :B && @pos.first == 1 
       true 
-    elsif @color == :B && @pos.first == 6 
+    elsif @color == :W && @pos.first == 6 
       true 
     else 
       false 
@@ -21,7 +21,7 @@ class Pawn < Piece
   end
   
   def forward_dir
-    @color == :W ? 1 : -1
+    @color == :B ? 1 : -1
   end
   
   def forward_steps
