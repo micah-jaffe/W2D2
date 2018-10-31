@@ -5,7 +5,6 @@ class Pawn < Piece
   end
   
   def moves
-    puts "HERE IS OUR POS: #{@pos}"
     forward_steps + side_attacks
   end
   
@@ -44,7 +43,7 @@ class Pawn < Piece
     
     # get overlap between all possible attack position and only those that are on board and different color
     # i.e. pawn can't attack off the board
-    attacking_pos = attacking_pos # & self.valid_moves
+    attacking_pos.select! { |arr| board.valid_pos?(arr) }
     
     side_moves = []
     

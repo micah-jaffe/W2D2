@@ -64,12 +64,12 @@ class Board
     @rows.each_with_index do |row, idx|
       row.each_with_index do |square, idx2|
         if square.color == color
-          all_our_moves.concat(square.valid_moves)
+          all_our_moves << square.valid_moves
         end
       end
     end
     
-    # all_our_moves.all?(&:empty?) && in_check?(color) 
+    all_our_moves.all?(&:empty?) && in_check?(color) 
   end
   
   def in_check?(color)

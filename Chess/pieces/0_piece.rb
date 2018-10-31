@@ -18,15 +18,6 @@ class Piece
   end
   
   def valid_moves
-    
-    # our_pieces = []
-    # @board.rows.each do |row|
-    #   our_pieces.concat(row.select { |square| square.color == @color })
-    # end
-    # 
-    # in_check = []
-    # 
-    # @board.valid_moves - our_pieces - in_check
     []
   end
   
