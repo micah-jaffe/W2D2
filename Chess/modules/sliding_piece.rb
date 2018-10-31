@@ -12,9 +12,7 @@ module SlidingPiece
   end
   
   def moves 
-    pos = self.pos
-    pos = [5, 4] #MAKE SURE TO DELETE
-    
+    pos = self.pos    
     possible_moves = []
     
     move_dirs.each do |vector|
@@ -31,15 +29,15 @@ module SlidingPiece
   end
   
   def grow_unblocked_moves_in_dir(vector)
-    pos = self.pos.dup
+    posi = self.pos.dup
     board = self.board
     moves_for_vector = []
     
-    pos.map!.with_index { |el, idx| el + vector[idx] }
+    posi = posi.map.with_index { |el, idx| el + vector[idx] }
     
-    while board.valid_pos?(pos) && board[pos].color != self.color
-      moves_for_vector << pos
-      pos.map!.with_index { |el, idx| el + vector[idx] }
+    while board.valid_pos?(posi) && board[posi].color != self.color
+      moves_for_vector << posi
+      posi = posi.map.with_index { |el, idx| el + vector[idx] }
     end
     
     moves_for_vector

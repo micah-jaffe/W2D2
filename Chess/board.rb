@@ -33,8 +33,12 @@ class Board
       raise ArgumentError.new("You must select a start position with an existing piece.")
     end
     
+    self[start_pos].pos = end_pos
+    self[end_pos].pos = start_pos
+    
     #HAVE TO ADD LOGIC TO MAKING SURE MOVE IS VALID FOR SPECIFIC PIECE
     self[start_pos], self[end_pos] = self[end_pos], self[start_pos]
+    
   
     #Implement logic for taking a piece 
     #right now it just swaps, and doesn't take anything off the board
@@ -65,8 +69,8 @@ class Board
       end
     end
     
-    all_out_moves.all(&:empty?) && in_check?(color) 
-    end
+    # all_our_moves.all?(&:empty?) && in_check?(color) 
+  end
   
   def in_check?(color)
     king_pos = []
@@ -99,6 +103,19 @@ class Board
     end
     
     total_moves
+  end
+  
+  def dup
+    dupped = Board.new
+    
+    @rows.each_with_index do |row, idx|
+      row.each do |square, idx2|
+        dup[[idx, idx2]] = square.dup
+        dup[[idx, idx2]].board = dupped
+      end
+    end
+    
+    dupped
   end
     
 end

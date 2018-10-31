@@ -8,10 +8,13 @@ module SteppingPiece
       diff.each_index do |i|
         move << diff[i] + pos[i]
       end
-      possible_moves << move
+      
+      if board.valid_pos?(move) && board[move].color != self.color
+        possible_moves << move
+      end
     end
     
-    possible_moves & self.valid_moves
+    possible_moves
   end
   
   private 

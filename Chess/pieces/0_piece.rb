@@ -18,13 +18,20 @@ class Piece
   end
   
   def valid_moves
-    # moves on the board that don't have our own color in it
-    our_pieces = []
-    @board.rows.each do |row|
-      our_pieces.concat(row.select { |square| square.color == @color })
-    end
     
-    @board.valid_moves - our_pieces
+    # our_pieces = []
+    # @board.rows.each do |row|
+    #   our_pieces.concat(row.select { |square| square.color == @color })
+    # end
+    # 
+    # in_check = []
+    # 
+    # @board.valid_moves - our_pieces - in_check
+    []
+  end
+  
+  def move_into_check?(end_pos)
+    
   end
   
   def pos=(val)
@@ -41,6 +48,10 @@ class Piece
   
   def inspect
     symbol.encode('utf-8')
+  end
+  
+  def dup
+    self.class.new(self.color, self.board, self.pos)
   end
   
 end

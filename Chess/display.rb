@@ -30,7 +30,7 @@ class Display
   end
   
   def cursor_update
-    system("clear")
+    # system("clear")
     loop do
       # if @from_square && @to_square
       #   @board.move_piece(@from_square, @to_square)
@@ -56,7 +56,8 @@ class Display
       #     puts "BOTH SQUARE WERE THE SAME, AND DESELECTED"
       #   end
       # end
-      system("clear")
+      
+      # system("clear")
     end
   end
   
@@ -67,6 +68,21 @@ end
 
 if __FILE__ == $0 
   b = Board.new
+  
+  b.move_piece([6, 5], [5, 5])
+  b.move_piece([1, 4], [3, 4])
+  b.move_piece([6, 6], [4, 6])
+  b.move_piece([0, 3], [4, 7])
+  p b.checkmate?(:W)
   d = Display.new(b)
-  d.cursor_update
+  d.render
+  
+  p b[[0, 1]].moves
+  puts "KNIGHT ABOVE"
+  p b[[0, 5]].moves 
+  puts "BISHOP ABOVE"
+  p b[[6, 5]].pos 
+  p b[[5, 5]].moves
+  puts "NEW PAWN BELOW"
+  p b[[1, 0]].moves
 end

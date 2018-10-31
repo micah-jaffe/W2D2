@@ -5,6 +5,7 @@ class Pawn < Piece
   end
   
   def moves
+    puts "HERE IS OUR POS: #{@pos}"
     forward_steps + side_attacks
   end
   
@@ -26,9 +27,12 @@ class Pawn < Piece
   
   def forward_steps
     if at_start_row? 
-      [[forward_dir, 0], [forward_dir*2, 0]]
+      [
+        [@pos.first + forward_dir, @pos.last], 
+        [@pos.first + forward_dir * 2, @pos.last]
+      ]
     else 
-      [[forward_dir, 0]] & self.valid_moves
+      [[@pos.first + forward_dir, @pos.last]] # & valid_moves
     end
   end
   
@@ -40,7 +44,7 @@ class Pawn < Piece
     
     # get overlap between all possible attack position and only those that are on board and different color
     # i.e. pawn can't attack off the board
-    attacking_pos = attacking_pos & self.valid_moves
+    attacking_pos = attacking_pos # & self.valid_moves
     
     side_moves = []
     
