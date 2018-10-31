@@ -18,11 +18,19 @@ class Piece
   end
   
   def valid_moves
-    []
+    next_moves = []
+    piece_moves = moves
+    piece_moves.each do |move|
+      next_moves << move unless move_into_check?(move)
+    end
+    
+    next_moves
   end
   
   def move_into_check?(end_pos)
-    
+    duped = @board.dup
+    duped.move_piece(@pos, end_pos)
+    duped.in_check?
   end
   
   def pos=(val)
@@ -30,10 +38,6 @@ class Piece
   end
   
   def symbol
-    
-  end
-  
-  def move_into_check?(end_pos)
     
   end
   

@@ -106,12 +106,13 @@ class Board
   end
   
   def dup
+    #TODO: fix infinite loop here
     dupped = Board.new
     
     @rows.each_with_index do |row, idx|
-      row.each do |square, idx2|
-        dup[[idx, idx2]] = square.dup
-        dup[[idx, idx2]].board = dupped
+      row.each_with_index do |square, idx2|
+        dupped[[idx, idx2]] = square.dup
+        dupped[[idx, idx2]].board = dupped
       end
     end
     

@@ -15,4 +15,8 @@ class NullPiece < Piece
     []
   end
   
+  def dup
+    NullPiece.instance
+  end
+  
 end
